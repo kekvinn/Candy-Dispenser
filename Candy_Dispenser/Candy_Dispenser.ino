@@ -61,13 +61,13 @@ void detectDistance()
   unsigned int uS = sonar.ping(); 
   int distance = uS / US_ROUNDTRIP_CM;
   
-  if(distance <= 8)
+  if(distance <= 5)
   {
     dispensed = true;
     displayDispensing();
     myServos[selection].write(180);
   }
-  else if(distance > 8)
+  else if(distance > 5)
   {
     myServos[selection].write(0);
     if(dispensed)
