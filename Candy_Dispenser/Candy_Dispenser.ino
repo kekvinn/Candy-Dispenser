@@ -66,16 +66,19 @@ void detectDistance()
     dispensed = true;
     displayDispensing();
     myServos[selection].write(180);
+    internalTimer++;
+    delay(150);
   }
   else if(distance > 5)
   {
     myServos[selection].write(0);
-    if(dispensed)
+    if(dispensed && internalTimer > 2)
     {
       displayEnjoy();
     }
     dispensed = false;
     displayDefault();
+    internalTimer = 0;
   }
 }
 
@@ -133,7 +136,7 @@ void displayEnjoy()
   lcd.clear();
   lcd.setCursor(5, 0);
   lcd.print("Enjoy!");
-  delay(1500);
+  delay(700);
 }
 
 void displaySelection()
